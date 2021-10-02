@@ -147,10 +147,6 @@
 			       						v-model="editedTitle"
 			       						:rules="rules"
 			       					/>
-			       					<div>
-			       						
-			       					<p class="mt-0" align="start">Old Value:</p>
-			       					</div>
 			       					<v-text-field 
 			       						outlined
 			       						type="text"
