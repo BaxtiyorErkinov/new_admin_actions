@@ -198,6 +198,7 @@
 					.then(result => {
 						this.allLanguages.push(result)
 						this.dialog = false
+						this.form.title = ''
 					})
 			},
 			deleteLang(id){

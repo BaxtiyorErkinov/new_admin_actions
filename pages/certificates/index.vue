@@ -231,6 +231,8 @@
 						this.allCertificates.push(res),
 						this.get_certificate()
 						this.dialog = false
+						this.title =  ''
+						this.text = ''
 					})
 					.catch(err => {
 						console.log(err)

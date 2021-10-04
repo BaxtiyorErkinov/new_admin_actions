@@ -304,6 +304,14 @@
 					.then(result => {
 						this.allQuestions.push(result)
 						this.dialog = false
+						this.form.qestion = ''
+						this.form.answer = ''
+						this.form.file = null
+						this.form.a = ''
+						this.form.b = ''
+						this.form.c = ''
+						this.form.d = ''
+						this.form.language = null
 					})
 					.catch(err => {
 						console.log(err)
