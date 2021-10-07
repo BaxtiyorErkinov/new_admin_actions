@@ -160,6 +160,9 @@
 
 <script>
 	export default{
+		head: {
+      		title: 'Admin Panel - Languages'
+    	},
 		data(){
 			return{
 				rules: [

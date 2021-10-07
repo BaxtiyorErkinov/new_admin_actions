@@ -80,7 +80,13 @@
 </template>
 
 <script>
-	export default{	
+	export default{
+		head() {
+			return{
+
+      			title: `Student - ${this.stud.name} ${this.stud.surname}`
+			}
+    	},
 		data(){
 			return{
 				dialog: false,

@@ -6,6 +6,9 @@
 
 <script>
 	export default{
+		head: {
+			title: 'Login'
+		},
 		layout: 'nonav',
 	}
 </script>

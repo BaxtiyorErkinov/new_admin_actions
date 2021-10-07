@@ -30,6 +30,9 @@
 
 <script>
 	export default{
+		head: {
+     		title: 'Admin Panel - Contacts'
+    	},
 		data(){
 			return{
 				allContacts: [],

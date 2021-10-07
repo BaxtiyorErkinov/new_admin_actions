@@ -63,6 +63,9 @@
 
 <script>
 	export default{
+		head: {
+      		title: 'Admin Panel - Centers'
+    	},
 		data(){
 			return{
 				educenters: [],

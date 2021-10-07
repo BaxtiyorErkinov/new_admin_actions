@@ -187,6 +187,9 @@
 
 <script>
 	export default{
+		head: {
+      		title: 'Admin Panel - Certificates'
+    	}	,
 		data(){
 			return{
 				rules: [

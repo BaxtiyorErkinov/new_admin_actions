@@ -81,6 +81,9 @@
 
 <script>
   export default{
+    head: {
+      title: 'Admin Panel - Home'
+    },
     data(){
       return{
           centers:0,

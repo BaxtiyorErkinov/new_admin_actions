@@ -248,6 +248,9 @@
 
 <script>
 	export default{
+		head: {
+      		title: 'Admin Panel - Questions'
+    	},
 		data(){
 			return{
 				rules: [

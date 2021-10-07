@@ -57,6 +57,9 @@
 
 <script>
 	export default{
+		head: {
+      		title: 'Admin Panel - Students'
+    	},
 		data(){
 			return{
 				studNames: [],
