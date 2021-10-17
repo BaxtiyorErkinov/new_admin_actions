@@ -75,6 +75,18 @@
 								<h4>Certificates</h4>
 							</v-col>
 					</v-list-item>
+					<v-list-item link to="/books">				
+							<v-col cols="12" class="d-flex justify-center white--text">
+								<v-icon left color="white">mdi-book-open-page-variant-outline</v-icon>
+								<h4>Books</h4>
+							</v-col>
+					</v-list-item>
+					<v-list-item link to="/news">				
+							<v-col cols="12" class="d-flex justify-center white--text">
+								<v-icon left color="white">mdi-bell-badge-outline</v-icon>
+								<h4>News</h4>
+							</v-col>
+					</v-list-item>
 				</v-row>
 		</v-navigation-drawer>
 		</v-navigation-drawer>

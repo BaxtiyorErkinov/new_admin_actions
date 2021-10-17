@@ -9,8 +9,8 @@
           <h1 v-else>
             {{ otherError }}
           </h1>
-          <NuxtLink to="/student">
-            Students
+          <NuxtLink to="/">
+            Home
           </NuxtLink>
         </v-card-content>
       </v-card>
