@@ -7,12 +7,15 @@
 				</v-toolbar-title>
 		</v-app-bar>
 		<v-navigation-drawer app v-model="drawer" color="#1b2a47" width="200">
-				<v-row wrap class="mt-8" v-for="item in links" :key="item.id">
-					<v-list-item link :to="item.rout">
+				<v-row wrap class="mt-8">
+					<v-list-item link :to="item.rout" v-for="item in links" :key="item.id">
 							<v-col cols="12" class="d-flex justify-center white--text">
 								<v-icon left color="white">{{item.icon}}</v-icon>
 								<h4 class="ml-4">{{item.title}}</h4>
 							</v-col>
+					</v-list-item>
+					<v-list-item class="d-flex justify-center">
+						<v-btn text @click="logout" dark><v-icon>mdi-logout</v-icon>LOGOUT</v-btn>
 					</v-list-item>
 				</v-row>
 		</v-navigation-drawer>
@@ -35,6 +38,19 @@
 					{ id: 7, title: 'Books', icon: 'mdi-book-open-page-variant-outline', rout: '/admin/books' },
 					{ id: 8, title: 'News', icon: 'mdi-bell-badge-outline',rout: '/admin/news' },
 				]
+			}
+		},
+		methods: {
+			async logout(){
+				await this.$axios.post('https://actions.uz/api/token/refresh/', {
+					refresh: this.$auth.$storage.getLocalStorage('refreshToken')
+				})
+				.then(res => {
+	        	this.$router.push('/admin/Login')
+						this.$auth.$storage.removeLocalStorage('refreshToken')
+						this.$auth.$storage.removeLocalStorage('token')
+
+	        })
 			}
 		}
 	}

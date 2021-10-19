@@ -96,6 +96,7 @@ export default {
 
 		        .then(res => {
 		          this.$auth.$storage.setLocalStorage("token", res.data.access)
+		          this.$auth.$storage.setLocalStorage("refreshToken", res.data.refresh)		          
 		          this.$router.push("/admin/")
 		        })
 		        .catch((err) => {
