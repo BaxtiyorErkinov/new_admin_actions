@@ -41,7 +41,7 @@
                         	type="submit" 
                         	dark 
                         	:disabled="!valid"
-                        	@click="validate"
+                        	 @click="validate"
                         	>
                         	SIGN IN
                     	</v-btn>
@@ -92,12 +92,11 @@ export default {
 	},
     methods:{
     	 async loginForm(){
-	      	this.$axios
-		        .$post("https://actions.uz/api/token/", this.user)
+	      	await this.$axios.post("https://actions.uz/api/token/", this.user)
 
-		        .then((res) => {
-		          this.$router.push("/admin/")
+		        .then(res => {
 		          this.$auth.$storage.setLocalStorage("token", res.data.access)
+		          this.$router.push("/admin/")
 		        })
 		        .catch((err) => {
 		          if (err) {
