@@ -96,8 +96,8 @@ export default {
 		        .$post("https://actions.uz/api/token/", this.user)
 
 		        .then((res) => {
-		          this.$router.push("/admin/")
 		          this.$auth.$storage.setLocalStorage("token", res.data.access)
+		          this.$router.push("/admin/")
 		        })
 		        .catch((err) => {
 		          if (err) {

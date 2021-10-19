@@ -57,7 +57,7 @@
            </v-progress-linear>
         </v-card>
       </v-col>
-      <v-col cols="6" md="6">
+      <v-col cols="12" md="6">
         <v-card color="#1b2a47" class="pa-3 ma-1 text-center" v-for="names in filteredItems" :key="names.id">
           <div class="title" style="color:#24caa1;">Student : <span>{{names.name}}  {{names.surname}}</span></div>
         </v-card>
@@ -66,11 +66,11 @@
           <span>More students</span>
         </v-btn>
       </v-col>
-      <v-col cols="6" md="6">
+      <v-col cols="12" md="6">
         <v-card color="#1b2a47" class="pa-3 ma-1 text-center" v-for="names in filteredCenters" :key="names.id">
           <div class="title" style="color:#eb4b4b;">Markaz : <span>{{names.title}}</span></div>
         </v-card>
-        <v-btn text color="#2eb7f3">
+        <v-btn text color="#2eb7f3" @click="route_sec">
           <v-icon class="mr-1">mdi-more</v-icon>
           <span>More centers</span>
         </v-btn>
@@ -112,7 +112,7 @@
       ).catch(
           err => {
             if (err){
-              this.$router.push("/login")
+              this.$router.push("/admin/login")
             }
           }
         )
@@ -147,15 +147,30 @@
           })
       },
       route(){
-        this.$router.push('/student')
+        this.$router.push('/admin/student')
+      },
+      route_sec(){
+        this.$router.push('/admin/center')
+
       }
   },
     created(){
       this.get_centers()
       this.get_studs()
       this.get_data()
-      this.is_authorized()
-    }
+      // this.is_authorized()
+    },
+    async mounted(){
+      try{
+       await this.$axios.get('https://actions.uz/api/get-user/', {
+          headers: {
+               Authorization:"Bearer " + this.$auth.$storage.getLocalStorage("token")
+            }
+        })
+      } catch{
+        this.$router.push('/admin/Login')
+      }
+    },
 }
 </script>
 
