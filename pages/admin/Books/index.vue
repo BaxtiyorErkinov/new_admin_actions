@@ -7,7 +7,7 @@
 			<v-row>
 				<v-col cols="6" md="4" v-for="book in allBooks" :key="book.id">
 					<v-card flat class="pa-5" color="#1b2a47" dark>
-						<v-img height="200" :src="`http://127.0.0.1:8000${book.cover}`"></v-img>
+						<v-img height="200" :src="`https://actions.uz${book.cover}`"></v-img>
 						<div class="text-center pa-3 mt-5">
 							<h2 class="mb-2">{{book.title}}</h2>
 						</div>
@@ -16,7 +16,7 @@
 								<v-btn icon color="orange" @click="editebtn = true, editeid = book"><v-icon>mdi-square-edit-outline</v-icon></v-btn>
 								<v-btn icon color="error" @click="deletebtn = true, deleteid = book"><v-icon>mdi-trash-can-outline</v-icon></v-btn>
 							</div>
-							<a :href="`http://127.0.0.1:8000${book.book}`" class="text-decoration-none"><v-btn class="white--text" color="teal accent-3">DOWNLOAD</v-btn></a>
+							<a :href="`https://actions.uz${book.book}`" class="text-decoration-none"><v-btn class="white--text" color="teal accent-3">DOWNLOAD</v-btn></a>
 						</div>
 					</v-card>
 				</v-col>
@@ -167,13 +167,13 @@
 		},
 		methods:{
 			async get_books(){
-				await this.$axios.get('http://127.0.0.1:8000/api/book-view/')
+				await this.$axios.get('https://actions.uz/api/book-view/')
 					.then(res => {
 						this.allBooks = res.data
 					})
 			},
 			async del_book(id){
-				this.$axios.$delete(`http://127.0.0.1:8000/api/book-delete/${id}/`)
+				this.$axios.$delete(`https://actions.uz/api/book-delete/${id}/`)
 					.then(() => {
 						this.allBooks = this.allBooks.filter(book => book.id !== id)
 						this.deletebtn = false
@@ -194,7 +194,7 @@
 				fd.append('cover', this.cover, this.cover.name)
 				fd.append('book', this.book, this.book.name)
 
-				await this.$axios.post('http://127.0.0.1:8000/api/book-create/', fd)
+				await this.$axios.post('https://actions.uz/api/book-create/', fd)
 					.then(res => {
 						this.allBooks.push(res)
 						this.get_books()
@@ -217,7 +217,7 @@
 				edited.append('cover', this.editedCover, this.editedCover.name)
 				edited.append('book', this.editedBook, this.editedBook.name)
 
-				this.$axios.patch(`http://127.0.0.1:8000/api/book-update/${id}/`, edited)
+				this.$axios.patch(`https://actions.uz/api/book-update/${id}/`, edited)
 					.then(res => {
 						this.allBooks = res.data
 						this.get_books()

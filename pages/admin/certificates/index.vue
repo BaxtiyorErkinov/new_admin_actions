@@ -11,7 +11,7 @@
 						<v-responsive class="text-h5">
 							<v-avatar class="d-block ma-auto" size="100" tile>
 								<img src="@/assets/images/noimg.jpg" v-if="certificat.image == null">
-								<img v-else class="img" :src="`http://127.0.0.1:8000${certificat.image}`">
+								<img v-else class="img" :src="`https://actions.uz${certificat.image}`">
 							</v-avatar>
 							<div class="mt-4">							
 								<v-icon large color="error">mdi-certificate-outline</v-icon>
@@ -213,7 +213,7 @@
 		},
 		methods:{
 			get_certificate(){
-				this.$axios.get('http://127.0.0.1:8000/api/sertificate-get/')
+				this.$axios.get('https://actions.uz/api/sertificate-get/')
 					.then(res => {
 						let data = res.data
 						this.allCertificates = data
@@ -228,7 +228,7 @@
 				fd.append('title', this.title)
 				fd.append('image', this.image, this.image.name)
 				fd.append('text', this.text)
-				await this.$axios.post('http://127.0.0.1:8000/api/sertificate-create/', fd)
+				await this.$axios.post('https://actions.uz/api/sertificate-create/', fd)
 					.then(res => {
 						console.log(res)
 						this.allCertificates.push(res),
@@ -242,7 +242,7 @@
 					})
 			},
 			async del_certificate(id){
-				this.$axios.$delete(`http://127.0.0.1:8000/api/sertificate-delete/${id}/`)
+				this.$axios.$delete(`https://actions.uz/api/sertificate-delete/${id}/`)
 					.then(() => {
 						this.allCertificates = this.allCertificates.filter(cert => cert.id !== id)
 						this.deletebtn = false
@@ -261,7 +261,7 @@
 				edited.append('image', this.editedImg)
 				edited.append('text', this.editedText)
 
-				await this.$axios.$patch(`http://127.0.0.1:8000/api/sertificate-patch/${id}/`, edited)
+				await this.$axios.$patch(`https://actions.uz/api/sertificate-patch/${id}/`, edited)
 					.then(res =>{
 						this.allCertificates = res.data
 						this.get_certificate()

@@ -9,7 +9,7 @@
 								<div>						
 									<v-responsive>
 										<v-avatar size="100" class="grey lighten-2">
-											<img :src="`http://127.0.0.1:8000${centers.logo}`" alt="as" />
+											<img :src="`https://actions.uz${centers.logo}`" alt="as" />
 										</v-avatar>
 									</v-responsive>
 								</div>
@@ -73,7 +73,7 @@
 		},
 		methods:{
 			get_centers(){
-				this.$axios.get('http://127.0.0.1:8000/api/educenter-view/')
+				this.$axios.get('https://actions.uz/api/educenter-view/')
 					.then(res => {
 						let data = res.data
 						this.educenters = data

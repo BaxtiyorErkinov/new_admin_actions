@@ -63,7 +63,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: ''
+    
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

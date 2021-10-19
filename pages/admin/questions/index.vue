@@ -289,21 +289,21 @@
 		},
 		methods:{
 			get_questions(){
-				 this.$axios.get('http://127.0.0.1:8000/api/question-view/')
+				 this.$axios.get('https://actions.uz/api/question-view/')
 					.then(res => {
 						let data = res.data
 						this.allQuestions = data
 					})
 			},
 			get_language(){
-				this.$axios.get('http://127.0.0.1:8000/api/language-view/')
+				this.$axios.get('https://actions.uz/api/language-view/')
 				.then(res => {
 					let lang = res.data
 					this.languages = lang
 				})
 			},
 			async postQuest(){
-				this.$axios.$post('http://127.0.0.1:8000/api/question-create/', this.form)
+				this.$axios.$post('https://actions.uz/api/question-create/', this.form)
 					.then(result => {
 						this.allQuestions.push(result)
 						this.dialog = false
@@ -321,7 +321,7 @@
 					})
 			},
 			async editQuest(id){
-				await this.$axios.$post(`http://127.0.0.1:8000/api/question-update/${id}/`, this.edited)
+				await this.$axios.$post(`https://actions.uz/api/question-update/${id}/`, this.edited)
 					.then(res => {
 						this.allQuestions = res.data
 						this.get_questions()

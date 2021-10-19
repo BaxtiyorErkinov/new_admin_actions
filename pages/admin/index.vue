@@ -105,7 +105,7 @@
     },
     methods:{
       is_authorized() {
-       this.$axios.get('http://127.0.0.1:8000/api/get-user/',{
+       this.$axios.get('https://actions.uz/api/get-user/',{
         headers: {
           Authorization:"Bearer" + this.$auth.$storage.getLocalStorage("token")
         }}
@@ -119,7 +119,7 @@
       
     },
       get_data(){
-         this.$axios.get('http://127.0.0.1:8000/api/get-full-data/')
+         this.$axios.get('https://actions.uz/api/get-full-data/')
         .then (res => {
           let data = res.data
           this.studs = data['students']
@@ -133,14 +133,14 @@
         )  
       },
       get_studs(){
-        this.$axios.get('http://127.0.0.1:8000/api/student-view/')
+        this.$axios.get('https://actions.uz/api/student-view/')
           .then(res => {
             let data = res.data
             this.studNames = data
           })
       },
       get_centers(){
-        this.$axios.get('http://127.0.0.1:8000/api/educenter-view/')
+        this.$axios.get('https://actions.uz/api/educenter-view/')
           .then(res => {
             let data = res.data
             this.centerNames = data

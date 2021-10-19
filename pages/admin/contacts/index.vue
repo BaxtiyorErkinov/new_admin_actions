@@ -40,7 +40,7 @@
 		},
 		methods: {
 		  get_contacts () {
-		    this.$axios.get('http://127.0.0.1:8000/api/contact-view/')
+		    this.$axios.get('https://actions.uz/api/contact-view/')
 		 		.then(res => {
 		 			let data = res.data
 		 			this.allContacts = data

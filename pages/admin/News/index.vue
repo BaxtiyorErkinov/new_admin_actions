@@ -7,7 +7,7 @@
 			<v-row>
 				<v-col cols="12" md="4" sm="6" v-for="news in allNews" :key="news.id">
 					<v-card flat color="#1b2a47" dark class="pb-10" width="300">
-						<v-img width="300" :src="`http://127.0.0.1:8000${news.image}`"></v-img>
+						<v-img width="300" :src="`https://actions.uz${news.image}`"></v-img>
 						<div class="text-center mt-4">
 							<h2>{{news.title}}</h2>
 						</div>
@@ -188,7 +188,7 @@
 		},
 		methods:{
 			async getNews(){
-				await this.$axios.get('http://127.0.0.1:8000/api/site-view/')
+				await this.$axios.get('https://actions.uz/api/site-view/')
 					.then(res => {
 						this.allNews = res.data
 					})
@@ -201,7 +201,7 @@
 				fd.append('title', this.title)
 				fd.append('image', this.image, this.image.name)
 				fd.append('text', this.text)
-				await this.$axios.post('http://127.0.0.1:8000/api/site-news/', fd)
+				await this.$axios.post('https://actions.uz/api/site-news/', fd)
 					.then(res => {
 						console.log(res)
 						this.allNews.push(res)
@@ -215,7 +215,7 @@
 					})
 			},
 			async del_news(id){
-				this.$axios.$delete(`http://127.0.0.1:8000/api/news-delete/${id}/`)
+				this.$axios.$delete(`https://actions.uz/api/news-delete/${id}/`)
 					.then(() => {
 						this.allNews = this.allNews.filter(news => news.id !== id)
 						this.deletebtn = false
@@ -233,7 +233,7 @@
 				edited.append('image', this.editedImg)
 				edited.append('text', this.editedText)
 
-				await this.$axios.$patch(`http://127.0.0.1:8000/api/news-patch/${id}/`, edited)
+				await this.$axios.$patch(`https://actions.uz/api/news-patch/${id}/`, edited)
 					.then(res =>{
 						this.allNews = res.data
 						this.getNews()

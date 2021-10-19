@@ -9,7 +9,7 @@
           <h1 v-else>
             {{ otherError }}
           </h1>
-          <NuxtLink to="/">
+          <NuxtLink to="/admin/">
             Home
           </NuxtLink>
         </v-card-content>
@@ -38,6 +38,11 @@ export default {
       this.error.statusCode === 404 ? this.pageNotFound : this.otherError
     return {
       title
+    }
+  },
+  mounted(){
+    if(this.error.statusCode === 404){
+      this.$router.push('/admin/')
     }
   }
 }

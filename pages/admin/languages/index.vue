@@ -190,14 +190,14 @@
 		},
 		methods: {
 			get_langs(){
-				this.$axios.get('http://127.0.0.1:8000/api/language-view/')
+				this.$axios.get('https://actions.uz/api/language-view/')
 				 .then(res => {
 						let data = res.data
 						this.allLanguages = data
 					})
 			},
 			async add_lang(){
-				this.$axios.$post('http://127.0.0.1:8000/api/language-create/', this.form)
+				this.$axios.$post('https://actions.uz/api/language-create/', this.form)
 					.then(result => {
 						this.allLanguages.push(result)
 						this.dialog = false
@@ -206,7 +206,7 @@
 			},
 			deleteLang(id){
 				console.log(id)
-				this.$axios.$delete(`http://127.0.0.1:8000/api/language-delete/${id}/` )
+				this.$axios.$delete(`https://actions.uz/api/language-delete/${id}/` )
 					.then(() => {
 						this.allLanguages = this.allLanguages.filter(lang => lang.id !== id)
 						this.modal = false
@@ -216,7 +216,7 @@
 			   		})	
 			},
 			async editLang(lang){
-				await this.$axios.$post(`http://127.0.0.1:8000/api/language-update/${lang}/`, this.edited)
+				await this.$axios.$post(`https://actions.uz/api/language-update/${lang}/`, this.edited)
 					.then(res =>{
 						this.allLanguages = res.data
 						this.get_langs()

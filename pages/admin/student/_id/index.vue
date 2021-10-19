@@ -83,7 +83,6 @@
 	export default{
 		head() {
 			return{
-
       			title: `Student - ${this.stud.name} ${this.stud.surname}`
 			}
     	},
@@ -94,8 +93,8 @@
 			}
 		},
 		async asyncData({$axios, params}){
-			const stud = await $axios.$get(`http://127.0.0.1:8000/api/student-detail/${params.id}`)
-			const center = await $axios.$get(`http://127.0.0.1:8000/api/educenter-detail/${stud.education}`)
+			const stud = await $axios.$get(`https://actions.uz/api/student-detail/${params.id}`)
+			const center = await $axios.$get(`https://actions.uz/api/educenter-detail/${stud.center}`)
 			return{
 				stud: stud,
 				center
@@ -103,13 +102,13 @@
 		},
 		methods:{
 			async deleteStud() {
-			 await this.$axios.$delete(`http://127.0.0.1:8000/api/student-delete/${this.stud.id}/`)
+			 await this.$axios.$delete(`https://actions.uz/api/student-delete/${this.stud.id}/`)
 			 	.then(() => {
 			   		this.stud.splice(this.stud.id, 1)
-			 		this.$router.push('/student')
+			 		this.$router.push('/admin/student')
 			 	})
 			 	.catch(() => {
-			 		this.$router.push('/student')
+			 		this.$router.push('/admin/student')
 			 	})
            	}
 		},
@@ -117,6 +116,4 @@
 </script>
 
 <style scoped>
-
 </style>
- 

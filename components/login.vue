@@ -93,10 +93,10 @@ export default {
     methods:{
     	 async loginForm(){
 	      	this.$axios
-		        .$post("http://127.0.0.1:8000/api/token/", this.user)
+		        .$post("https://actions.uz/api/token/", this.user)
 
 		        .then((res) => {
-		          this.$router.push("/")
+		          this.$router.push("/admin/")
 		          this.$auth.$storage.setLocalStorage("token", res.data.access)
 		        })
 		        .catch((err) => {

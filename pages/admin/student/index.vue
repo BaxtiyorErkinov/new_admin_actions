@@ -9,10 +9,10 @@
 				      		<img src="@/assets/images/avatar.png">
 				      	</v-avatar>
 				      <v-list-item-content class="white--text">
-				        <v-list-item-title><a :href="`/student/${stud.id}`">{{ stud.name }} {{stud.surname}}</a></v-list-item-title>
+				        <v-list-item-title><a :href="`/admin/student/${stud.id}`">{{ stud.name }} {{stud.surname}}</a></v-list-item-title>
 				      </v-list-item-content>
 				      <v-list-item-action>
-				      	<v-btn fab color="error" text @click="dialog = true">
+				      	<v-btn fab color="error" text @click="dialog = true, studid = stud">
 				      		<v-icon>mdi-trash-can-outline</v-icon>
 				      	</v-btn>
 				      </v-list-item-action>
@@ -43,7 +43,7 @@
 
 	          			<v-btn
 		           			 color="error darken-1"
-		            		@click.prevent="deleteStud(stud)"
+		            		@click.prevent="deleteStud(studid.id)"
 	          			>
 	            		Delete
 	         		 	</v-btn>
@@ -62,6 +62,7 @@
     	},
 		data(){
 			return{
+				studid: null,
 				studNames: [],
 				dialog: false,
 			}
@@ -71,16 +72,16 @@
 		},
 		methods:{
 			get_studs(){
-	       		this.$axios.get('http://127.0.0.1:8000/api/student-view/')
+	       		this.$axios.get('https://actions.uz/api/student-view/')
 	          		.then(res => {
 	            		let data = res.data
 	            		this.studNames = data
 	          		})
 	      	},
 			async deleteStud(stud) {
-			   await this.$axios.$delete(`http://127.0.0.1:8000/api/student-delete/${stud.id}/`)
+			   await this.$axios.$delete(`https://actions.uz/api/student-delete/${stud}/`)
 			   	.then(() => {
-			   		this.studNames.splice(stud, 1)
+			   		this.studNames = this.studNames.filter(s => s.id !== stud)
 			   		this.dialog = false
 			   	})
 			   	.catch(() => {
