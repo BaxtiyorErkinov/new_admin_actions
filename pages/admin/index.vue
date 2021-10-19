@@ -160,9 +160,9 @@
       this.get_data()
       // this.is_authorized()
     },
-    async mounted(){
+    mounted(){
       try{
-       await this.$axios.get('https://actions.uz/api/get-user/', {
+       this.$axios.get('https://actions.uz/api/get-user/', {
           headers: {
                Authorization:"Bearer " + this.$auth.$storage.getLocalStorage("token")
             }
